@@ -33,7 +33,7 @@ app.use((err, req, res, next) => {
     res.locals.message = err.message
     res.locals.error = req.app.get('env') === 'development' ? err : {}
     if (err.status === 404) {
-        res.redirect('/')
+        res.status(404)
     } else {
         // send the error status
         res.status(err.status || 500)
