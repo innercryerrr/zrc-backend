@@ -17,10 +17,10 @@ app.use(logger('dev'))
 app.use(express.json())
 app.use(cookieParser())
 app.use(express.urlencoded({ extended: false }))
-app.use(express.static(path.join(__dirname, 'services', 'public')))
+app.use(express.static(path.join(__dirname, 'public'))
 
 // route index
-app.use('/rest/', restRouter)
+app.use('/rest', restRouter)
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
@@ -33,7 +33,7 @@ app.use((err, req, res, next) => {
     res.locals.message = err.message
     res.locals.error = req.app.get('env') === 'development' ? err : {}
     if (err.status === 404) {
-        res.redirect('/landing-page')
+        res.redirect('/')
     } else {
         // send the error status
         res.status(err.status || 500)
