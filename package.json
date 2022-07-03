@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "NODE_ENV=development nodemon ./bin/www",
-    "dep": "NODE_ENV=deployment nodemon ./bin/www",
+    "dep": "NODE_ENV=deployment node ./bin/www",
     "start": "npm run dep"
   },
   "dependencies": {
@@ -19,5 +19,9 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.18"
+  },
+  "engines": {
+    "node": "17.9.0",
+    "npm": "8.12.1"
   }
 }
