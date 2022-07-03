@@ -42,11 +42,5 @@ app.use((err, req, res, next) => {
 
 console.log('   ...app was succesfully setup!\n')
 
-if (process.env.NODE_ENV === 'deployment') {
-    if (process.env.DEP_LOG === 'false') {
-        console.log = (...args) => {}
-    }
-}
-
 // export express app
 module.exports = app;
