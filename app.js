@@ -12,12 +12,12 @@ global.stripeClient = require('./services/stripeClient.js')
 
 const app = express();
 
-app.use(cors())
+app.use(cors('*'))
 app.use(logger('dev'))
 app.use(express.json())
 app.use(cookieParser())
 app.use(express.urlencoded({ extended: false }))
-app.use(express.static(path.join(__dirname, 'services', 'public', 'landing')))
+app.use(express.static(path.join(__dirname, 'services', 'public')))
 
 // route index
 app.use('/rest/', restRouter)
