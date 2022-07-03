@@ -18,9 +18,33 @@ app.use(express.urlencoded({ extended: false }))
 app.use(express.static(path.join(__dirname, './services/public')))
 
 // route index
-app.use('/', restRouter)
+app.use('/rest/', restRouter)
 
-app
+// catch 404 and forward to error handler
+app.use((req, res, next) => {
+    next(createError(404))
+})
+
+// error handler
+app.use((err, req, res, next) => {
+    // set locals, only providing error in development
+    res.locals.message = err.message
+    res.locals.error = req.app.get('env') === 'development' ? err : {}
+    if (err.status === 404) {
+        res.redirect('/landing-page')
+    } else {
+        // send the error status
+        res.status(err.status || 500)
+    }
+})
+
+console.log('   ...app was succesfully setup!\n')
+
+if (process.env.NODE_ENV === 'deployment') {
+    if (process.env.DEP_LOG === 'false') {
+        console.log = (...args) => {}
+    }
+}
 
 // export express app
 module.exports = app;
