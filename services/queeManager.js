@@ -1,4 +1,4 @@
-const InfosQueeManager = require('./classes/InfosQueeManager.js')
+const InfosQueeManager = require('./../classes/InfosQueeManager.js')
 
 let queeManager = new InfosQueeManager({
     auto: false,
@@ -13,6 +13,18 @@ queeManager.on('new-info-to-quee', async function (newinf) {
 })
 
 queeManager.on('performing-submit', async function (currinf) {
+    if (!this.auto) {
+        // what what
+    }
+})
+
+queeManager.on('submit-success', async function (currinf) {
+    if (!this.auto) {
+        // what what
+    }
+})
+
+queeManager.on('submit-error', async function (currinf) {
     if (!this.auto) {
         // what what
     }
