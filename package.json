@@ -2,6 +2,7 @@
   "name": "zrc-backendz",
   "version": "0.0.0",
   "private": true,
+  "type": "commonjs",
   "scripts": {
     "dev": "NODE_ENV=development nodemon ./bin/www.js",
     "dep": "NODE_ENV=deployment node ./bin/www.js",
