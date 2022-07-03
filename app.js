@@ -3,7 +3,8 @@ require('dotenv').config();
 const express = require('express'),
       path = require('path'),
       cookieParser = require('cookie-parser'),
-      logger = require('morgan');
+      logger = require('morgan'),
+      cors = require('cors');
     
 global.restRouter = require('./services/restRouter.js')
 global.queeManager = require('./services/queeManager.js')
@@ -11,6 +12,7 @@ global.stripeClient = require('./services/stripeClient.js')
 
 const app = express();
 
+app.use(cors())
 app.use(logger('dev'))
 app.use(express.json())
 app.use(cookieParser())
